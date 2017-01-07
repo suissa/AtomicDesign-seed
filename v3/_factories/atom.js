@@ -1,4 +1,4 @@
-const CONFIG_PATH = './../_config/'
+const CONFIG_PATH = './../_config/atoms/'
 
 const REQUIRED = require(CONFIG_PATH + 'fields-required')
 const OPTIONAL = require(CONFIG_PATH + 'fields-optional')

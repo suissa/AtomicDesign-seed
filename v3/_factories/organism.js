@@ -1,27 +1,20 @@
 const mongoose = require('mongoose')
 const moleculesPath = './../modules/'
-const organellesPath = './../_organelles/'
+const organellesPath = './../_organelles/organelle-'
 
 module.exports = (DNA, Molecule) => {
 
-	const organismName = DNA.name
-	const Organism = mongoose.model(organismName, Molecule) // deixar generico
+	const Organism = mongoose.model(DNA.name, Molecule) // deixar generico
+	const Organelles = require('./../_config/organism/organelles-default')
 
-	let Cell = {}
-	const Organelles = require('./../_config/organelles-default')
+	let OrganellesCell = (Array.isArray(DNA.organelles))
+		? DNA.organelles.concat(Organelles)
+		: Organelles
 
-	if (Array.isArray(DNA.organelles))
-		DNA.organelles.forEach((element, index) => Organelles.push(element))
+	const createOrganelles = (acc, name) => 
+		Object.assign(acc, {
+			[name]: require(organellesPath+name)(Organism, DNA.populate)})
 
-	const createOrganelles = (element, index) => {
-		if (element.includes('populate') && DNA.populate) {
-			Cell[element] = require(organellesPath+'organelle-'+element)(Organism, DNA.populate)
-		} else {
-			Cell[element] = require(organellesPath+'organelle-'+element)(Organism)
-		}
-	}
 
-	Organelles.forEach(createOrganelles)
-	// console.log('Cell', Cell.find)
-	return Cell
+	return OrganellesCell.reduce(createOrganelles, {})
 }
