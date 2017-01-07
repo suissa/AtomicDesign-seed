@@ -35,3 +35,5 @@ module.exports = [
   'created_at'
 ]
 ```
+
+**Todos os módulos são gerados com suas rotas para uma API de CRUD com as seguintes funções automaticamente: `['create', 'find', 'findOne', 'findById' ,'update', 'remove']`**. Mais as definidas na configuração do seu módulo.
