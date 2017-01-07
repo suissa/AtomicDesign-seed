@@ -11,15 +11,15 @@ const createRequired = (CONFIG) =>
       })
     : ({type: CONFIG.type})
 
-const createOptional = (CONFIG) => Object.keys(CONFIG)
-    .filter( (key) => OPTIONAL.includes(key) )
-    .map( (option, i) => {
-      // console.log('option', option)
-      return Object.assign({}, {[option]: CONFIG[option]})
-    } )
-    .reduce( (acc, cur) => Object.assign(acc, {
+const filterOptionals = (key) => OPTIONAL.includes(key)
+const reduceToObject = (acc, cur) => Object.assign(acc, {
         [Object.keys(cur)[0]]: cur[Object.keys(cur)[0]]
-      }), {})
+      })
+
+const createOptional = (CONFIG) => Object.keys(CONFIG)
+    .filter( filterOptionals )
+    .map( (option, i) => Object.assign({}, {[option]: CONFIG[option]}) )
+    .reduce( reduceToObject, {})
 
 module.exports = (CONFIG) => Object.assign( {}, createRequired(CONFIG), createOptional(CONFIG))
 

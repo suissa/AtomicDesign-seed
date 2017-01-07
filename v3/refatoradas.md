@@ -1,5 +1,32 @@
 
 
+## Organelles
+
+### Populate
+
+```js
+module.exports = (Organism) => 
+  (req, res) => {
+    // ...
+    const toPopulate = (field, i) => {
+      let atomConfig = '../_atoms/atom-'+field.trim()+'-config'
+      let ref = require(atomConfig)['ref']
+      return {path: field.trim(), model: ref}
+    }
+    const fieldsToPopulate = req.query.entities
+                              .split(',')
+                              .map(toPopulate)
+    const query = {_id: req.params.id}
+    
+    return Organism.findOne(query)
+      .populate(fieldsToPopulate)
+      .exec()
+      .then(success)
+      .catch(error)
+  }
+
+```
+
 ## Organism - Factory
 
 ```js
@@ -55,24 +82,30 @@ module.exports = (organism, Molecule) => {
 PARA ESSE:
 
 ```js
-const mongoose = require('mongoose')
-const moleculesPath = './../modules/'
-const organellesPath = './../_organelles/organelle-'
+const CONFIG_PATH = './../_config/atoms/'
 
-module.exports = (DNA, Molecule) => {
+const REQUIRED = require(CONFIG_PATH + 'fields-required')
+const OPTIONAL = require(CONFIG_PATH + 'fields-optional')
+const FIELDS_REMOVE = require(CONFIG_PATH + 'fields-remove')
 
-    const Organism = mongoose.model(DNA.name, Molecule)
-    const Organelles = require('./../_config/organism/organelles-default')
+const createRequired = (CONFIG) => 
+  CONFIG.VALIDATE_FACTORY_PATH
+    ? ({type: CONFIG.type,
+        validate: require(CONFIG.VALIDATE_FACTORY_PATH)(CONFIG.ATOM_NAME.toUpperCase()) 
+      })
+    : ({type: CONFIG.type})
 
-    let OrganellesCell = (Array.isArray(DNA.organelles))
-        ? DNA.organelles.concat(Organelles)
-        : Organelles
+const filterOptionals = (key) => OPTIONAL.includes(key)
+const reduceToObject = (acc, cur) => Object.assign(acc, {
+        [Object.keys(cur)[0]]: cur[Object.keys(cur)[0]]
+      })
 
-    const createOrganelles = (acc, name) => 
-        Object.assign(acc, {
-            [name]: require(organellesPath+name)(Organism, DNA.populate)})
+const createOptional = (CONFIG) => Object.keys(CONFIG)
+    .filter( filterOptionals )
+    .map( (option, i) => Object.assign({}, {[option]: CONFIG[option]}) )
+    .reduce( reduceToObject, {})
+
+module.exports = (CONFIG) => Object.assign( {}, createRequired(CONFIG), createOptional(CONFIG))
 
 
-    return OrganellesCell.reduce(createOrganelles, {})
-}
 ```
