@@ -5,7 +5,8 @@ module.exports = (Organism) =>
     const error = require('./ribossomos/error-json')(res)
     
     return Organism.findOne(query)
-      .exec()
-      .then(success, error)
+                    .exec()
+                    .then(success)
+                    .catch(error)
   }
 

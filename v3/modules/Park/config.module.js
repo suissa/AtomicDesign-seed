@@ -4,19 +4,11 @@ const organelles = [
   'findByIdPopulate',
   'findAllPopulate'
 ]
-
 const molecule = {
   structure: require('./molecular.structure')
 }
-const organism = { 
-  name,
-  organelles
-}
-
-const DNA = {
-	organism,
-  molecule
-}
-const Cell = require('./../../_factories/module')(DNA)
+const organism = { name, organelles }
+const DNA = { organism, molecule }
+// const Cell = require('./../../_factories/module')(DNA)
 // console.log('Cell.organism', Cell.organism)
-module.exports = Cell
+module.exports = require('./../../_factories/module')(DNA)

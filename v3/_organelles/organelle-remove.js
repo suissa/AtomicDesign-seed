@@ -6,6 +6,7 @@ module.exports = (Organism) =>
     
     return Organism.remove(query)
                     .exec()
-                    .then(success, error)
+                    .then(success)
+                    .catch(error)
   }
 
