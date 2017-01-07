@@ -1,4 +1,3 @@
-console.log('findByFilter')
 module.exports = (Organism) => 
   (req, res) => {
     // const success = require('./ribossomos/success-200-json')(res)
@@ -20,10 +19,10 @@ module.exports = (Organism) =>
     const skip = limit * parseInt(page)
     page += 1 
 
-    console.log('req.query.page', req.query.page)
-    console.log('filtros', filtros)
-    console.log('limit', limit)
-    console.log('skip', skip)
+    // console.log('req.query.page', req.query.page)
+    // console.log('filtros', filtros)
+    // console.log('limit', limit)
+    // console.log('skip', skip)
 
     const success = (data) =>
       Organism.find(filtros).count((err, total) => {
