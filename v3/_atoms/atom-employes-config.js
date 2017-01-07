@@ -11,10 +11,7 @@ const PROPS = {
   type: Schema.Types.ObjectId,
   ref: 'User'
 }
-console.log('DEFAULT', DEFAULT)
 const atomConfig = Object.assign({}, DEFAULT, PROPS)
 
-console.log('atomConfig', atomConfig)
-const Atom = require('./../_factories/atom')(atomConfig)
-module.exports = Atom
+module.exports = require('./../_factories/atom')(atomConfig)
 

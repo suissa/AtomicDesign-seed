@@ -9,6 +9,5 @@ const molecule = {
 }
 const organism = { name, organelles }
 const DNA = { organism, molecule }
-// const Cell = require('./../../_factories/module')(DNA)
-// console.log('Cell.organism', Cell.organism)
+
 module.exports = require('./../../_factories/module')(DNA)

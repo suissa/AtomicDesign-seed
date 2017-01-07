@@ -12,7 +12,7 @@ module.exports = (Organism) =>
                                 .filter(filterToPopulate)
 
     const query = {_id: req.params.id}
-    console.log('fieldsToPopulate', fieldsToPopulate)
+    
     return Organism.findOne(query)
       .populate(fieldsToPopulate)
       .exec()
