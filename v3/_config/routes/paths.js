@@ -2,5 +2,6 @@ module.exports = {
   base: '/', 
   id: '/:id', 
   filter: '/filter',
-  populate: '/populate'
+  populateAll: '/populate',
+  populate: '/:id/populate'
 }
