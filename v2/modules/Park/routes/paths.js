@@ -1,1 +1,1 @@
-module.exports = {base: '/', id: '/:id'}
+module.exports = {base: '/', id: '/:id', filter: '/filter'}

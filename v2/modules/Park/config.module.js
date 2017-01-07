@@ -1,12 +1,12 @@
 const name = require('./../../_config/module/getName')(__filename)
-const organelles = []
+const organelles = ['findByFilter']
 
 const molecule = {
   structure: require('./molecular.structure')
 }
 const organism = { 
-  name
-  // organelles
+  name,
+  organelles
 }
 
 const DNA = {
