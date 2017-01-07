@@ -24,3 +24,14 @@ const DNA = { organism, molecule }
 
 module.exports = require('./../../_factories/module')(DNA)
 ```
+
+```js
+module.exports = [
+  'name',
+  'description',
+  'vagas',
+  'owner',
+  'employes',
+  'created_at'
+]
+```
