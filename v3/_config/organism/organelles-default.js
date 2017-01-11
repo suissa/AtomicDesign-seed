@@ -1,4 +1,5 @@
-module.exports = ['create', 
+module.exports = [
+  'create', 
   'find', 
   'findOne', 
   'findById',
