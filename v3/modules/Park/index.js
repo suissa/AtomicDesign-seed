@@ -1,7 +1,7 @@
 const organelles = [
-  'findByFilter',
-  'findByIdPopulate',
-  'findAllPopulate'
+  // 'findByFilter',
+  // 'findByIdPopulate',
+  // 'findAllPopulate'
 ]
 
 const MODULE = require('./config.module')(organelles)
