@@ -7,11 +7,7 @@ module.exports = (_file) => {
                     .split('atom-')[1]
                     .split('-config.js')[0]
                     .toLowerCase()
-  // console.log('_file', _file)     
-  // console.log('return', {
-  //   ATOM_NAME,
-  //   VALIDATE_FACTORY_PATH
-  // })                  
+                    
   return {
     ATOM_NAME,
     VALIDATE_FACTORY_PATH
