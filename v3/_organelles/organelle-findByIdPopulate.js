@@ -1,24 +1,23 @@
-const filterToPopulate = require('./helpers/filterToPopulate')
+const toPopulate = require('./helpers/toPopulate')
 
 module.exports = (Organism) => 
   (req, res) => {
-    // Callbacks Promise
     const success = require('./ribossomos/success-200-json')(res)
     const error = require('./ribossomos/error-json')(res)
 
-    const fields = Object
-                    .keys(Organism.schema.paths)
-                    .filter(field => !(field.includes('_')))
-                    .filter(field => (Organism.schema.paths[field].instance == 'ObjectID'))
-                    
-    const fieldsToPopulate = !(req.query.entities)
-                                ? fields
-                                : req.query
-                                    .entities
-                                    .split(',')
-                                    .filter(filterToPopulate)
+    const filterFields = (field) => !(field.includes('_'))
+    const testFields = (field) => ( Organism.schema.paths[field].instance == 'ObjectID'
+                                  || Organism.schema.paths[field].instance == 'Array' )
 
+    const fields = (req.query.entities)
+                    ? req.query.entities.split(',')
+                    : Object
+                        .keys(Organism.schema.paths)
+                        .filter( filterFields )
+                        .filter( testFields )
+                    
     const query = {_id: req.params.id}
+    const fieldsToPopulate = fields.reduce(toPopulate, [])
 
     return Organism.findOne(query)
       .populate(fieldsToPopulate)
