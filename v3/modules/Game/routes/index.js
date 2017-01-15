@@ -1,9 +1,9 @@
 module.exports = (Organism) => {
   const createRouteConfig = require(factory + 'routeConfig')(Organism)
-  console.log('routes.map(createRouteConfig)', routes.map(createRouteConfig))
   return routes.map(createRouteConfig)
 }
 
+const factory = '../../../_factories/'
 const routes = [
   { path: '/', 
     method: 'get', action: 'find' },
@@ -24,5 +24,3 @@ const routes = [
   { path: '/:id', 
     method: 'delete', action: 'remove' },
 ]
-
-const factory = '../../../_factories/'
