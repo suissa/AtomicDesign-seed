@@ -1,26 +1,12 @@
-module.exports = (Organism) => {
+module.exports = (routes, Organism) => {
+  // console.log('routes', routes)
+  // console.log('Organism', Organism)
   const createRouteConfig = require(factory + 'routeConfig')(Organism)
+  
+  // console.log('routes.map(createRouteConfig)', 
+  //   routes.map(createRouteConfig)[0].action)
   return routes.map(createRouteConfig)
 }
 
 const factory = '../../../_factories/'
-const routes = [
-  { path: '/', 
-    method: 'get', action: 'find' },
-  { path: '/', 
-    method: 'post', action: 'create' },
-  { path: '/filter', 
-    method: 'get', action: 'findByFilter' },
-  { path: '/badges/:badge', 
-    method: 'get', action: 'findBadges' },
-  { path: '/populate', 
-    method: 'get', action: 'findAllPopulate' },
-  { path: '/:id', 
-    method: 'get', action: 'findById' },
-  { path: '/:id/populate', 
-    method: 'get', action: 'findByIdPopulate' },
-  { path: '/:id', 
-    method: 'put', action: 'update' },
-  { path: '/:id', 
-    method: 'delete', action: 'remove' },
-]
+

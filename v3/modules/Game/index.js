@@ -1,10 +1,9 @@
-const organelles = ['findBadges']
-
-const MODULE = require('./config.module')(organelles)
 const CONFIG = require('./config')
+const ROUTER_PATH = './routes/'
+const routesConfig = require('./routes.config.js')
+const ROUTES = require('./config.module.routes')(routesConfig)
 
-const _router = require('./routes/' + CONFIG.ROUTER)
-const Routes = require('./routes/')(MODULE.organism)
-const Router = require('./routes/' + CONFIG.ROUTES)(Routes, _router)
+const ROUTER = require(ROUTER_PATH + CONFIG.ROUTER)
+const MODULE_ROUTER = require(ROUTER_PATH + CONFIG.ROUTES)(ROUTES, ROUTER)
 
-module.exports = Router
+module.exports = MODULE_ROUTER
