@@ -1,1 +1,0 @@
-module.exports = (ATOM_NAME) => './atom-'+ATOM_NAME+'-config.js'
