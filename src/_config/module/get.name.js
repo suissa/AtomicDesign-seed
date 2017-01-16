@@ -1,6 +1,6 @@
 const CONFIG = require('./../project')
 
-module.exports = (_file) =>
+module.exports = (_file) => 
   _file
     .split(CONFIG.PROJECT_NAME)[1]
     .split('modules')[1]

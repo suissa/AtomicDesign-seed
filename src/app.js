@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const compress = require('compression')
 const favicon = require('serve-favicon')
-const modules = require('./getModules')('./modules/')
+const modules = require('./_config/module/get.modules.js')('./modules/')
 const api = {}
 
 app.use(morgan('dev'))
@@ -21,8 +21,8 @@ app.use(compress()) // Compress response data with gzip
 
 
 /* Cria as rotas dinamicamente a partir dos módulos */
-const getRoutes = require('./_config/routes/getRoutes')
-const createRoutes = require('./_config/routes/createRoutes')(app)
+const getRoutes = require('./_config/routes/get.routes')
+const createRoutes = require('./_config/routes/create.routes')(app)
 
 modules
 .map(getRoutes)

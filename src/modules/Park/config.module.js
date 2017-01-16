@@ -1,4 +1,4 @@
-const name = require('./../../_config/module/getName')(__filename)
+const name = require('./../../_config/module/get.name')(__filename)
 const molecule = {
   structure: require('./molecular.structure')
 }

@@ -5,8 +5,6 @@ module.exports = [
     method: 'post', action: 'create' },
   { path: '/filter', 
     method: 'get', action: 'findByFilter' },
-  { path: '/badges/:badge', 
-    method: 'get', action: 'findBadges' },
   { path: '/populate', 
     method: 'get', action: 'findAllPopulate' },
   { path: '/:id', 

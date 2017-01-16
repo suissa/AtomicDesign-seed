@@ -1,6 +1,6 @@
 const FACTORY_MODULE_PATH = './../../_factories/module'
 
-const name = require('./../../_config/module/getName')(__filename)
+const name = require('./../../_config/module/get.name')(__filename)
 const structure = require('./molecular.structure')
 const molecule = { structure }
 

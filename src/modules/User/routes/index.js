@@ -1,5 +1,5 @@
 module.exports = (routes, Organism) => {
-  const createRouteConfig = require(factory + 'routeConfig')(Organism)
+  const createRouteConfig = require(factory + 'route.config')(Organism)
   return routes.map(createRouteConfig)
 }
 
