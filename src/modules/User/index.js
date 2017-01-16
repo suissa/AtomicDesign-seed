@@ -1,14 +1,15 @@
-const organelles = [
-  // 'findByFilter',
-  // 'findByIdPopulate',
-  // 'findAllPopulate'
-]
-
-const MODULE = require('./config.module')(organelles)
 const CONFIG = require('./config')
-  
-const _router = require('./routes/' + CONFIG.ROUTER)
-const Routes = require('./routes/')(MODULE.organism)
-const Router = require('./routes/' + CONFIG.ROUTES)(Routes, _router)
+const ROUTER_PATH = './routes/'
 
-module.exports = Router
+const fs = require('fs')
+const existsFile = (file) => fs.existsSync(file)
+const getRoutesConfig = () => existsFile('./routes.config.js') ||
+                              require('../../_config/routes/routes.config')
+                              
+const ROUTES_CONFIG = getRoutesConfig()
+const ROUTES = require('./config.module.routes')(ROUTES_CONFIG)
+
+const ROUTER = require(ROUTER_PATH + CONFIG.ROUTER)
+const MODULE_ROUTER = require(ROUTER_PATH + CONFIG.ROUTES)(ROUTES, ROUTER)
+
+module.exports = MODULE_ROUTER
