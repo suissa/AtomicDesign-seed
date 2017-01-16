@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 const moleculesPath = './../modules/'
-const organellesPath = './../_organelles/organelle-'
+const organellesPath = './../_organelles/'
 
 module.exports = (DNA, Molecule) => {
 
 	const Organism = mongoose.model(DNA.name, Molecule) // deixar generico
-	const Organelles = require('./../_config/organism/organelles-default')
+	const Organelles = require('./../_config/organism/organelles.default')
 
 	let OrganellesCell = (Array.isArray(DNA.organelles))
 		? DNA.organelles.concat(Organelles)
