@@ -119,8 +119,9 @@
 															return Object.assign(el, {validate})
 														})
 			$scope.SCHEMA = schema
+			$scope.validated = false
 			// const validate = eval(caught.data[1].validate)
-			console.log('teste validate', schema)
+			// console.log('teste validate', schema)
 		}
 		
 		UserService
