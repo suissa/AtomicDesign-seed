@@ -3,7 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('sisApp', [
   'ngRoute',
-  'sisApp.dashboard',
+  'sisApp.Dashboard',
   'sisApp.menu',
   'sisApp.User',
   'sisApp.Department',
