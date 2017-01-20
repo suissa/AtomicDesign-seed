@@ -5,7 +5,8 @@ module.exports = (Organism) =>
     const removeUnderlineFields = (el) => !el.includes('_')
     const fromSchemaToComponent = (el, i) => 
       ({ type: Organism.schema.paths[el].instance,
-        name: el })
+        name: el
+      })
     const translateToComponent = (el, i) => 
       (TYPES[el.type])
         ? Object.assign({name: el.name }, TYPES[el.type])
@@ -17,5 +18,5 @@ module.exports = (Organism) =>
                     .map(fromSchemaToComponent)
                     .map(translateToComponent)
                     console.log('schema', schema)
-    return res.json(schema)
+    return res.send(schema)
   }

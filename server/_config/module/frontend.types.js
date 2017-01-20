@@ -1,19 +1,20 @@
 const types = {
   'String': {
-      element: 'input', 
-      type: 'text'
+    element: 'input', 
+    type: 'text',
+    validate: (val) => val !== ''
   },
   'Number': {
-      element: 'input', 
-      type: 'number'
+    element: 'input', 
+    type: 'number'
   },
   'Date': {
-      element: 'input', 
-      type: 'date'
+    element: 'input', 
+    type: 'date'
   },
   'Boolean': {
-      element: 'input', 
-      type: 'checkbox'
+    element: 'input', 
+    type: 'checkbox'
   }
 }
 

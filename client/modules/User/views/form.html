@@ -6,9 +6,15 @@
   <form class="login-form">
   
     <div class="row" ng-repeat="field in SCHEMA">
+      {{field.validate}}
       <div class="input-field col s12">
         <div ng-show="field.element === 'input' ">
-          <input ng-model="Form[field.name]" id="{{ field.name }}" type="{{ field.type }}" class="validate" ng-show="{{field.type == 'text'}}">
+          <input ng-model="Form[field.name]" 
+                  id="{{ field.name }}" 
+                  type="{{ field.type }}" 
+                  class="validate" 
+                  ng-blur="field.validate(Form[field.name])"
+                  ng-show="{{field.type == 'text'}}">
           <input ng-model="Form[field.name]" id="{{ field.name }}" type="{{ field.type }}" class="validate" ng-show="{{field.type == 'date'}}">
 
           <label ng-show="{{field.type == 'checkbox'}}">{{ field.name }}

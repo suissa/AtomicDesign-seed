@@ -127,10 +127,10 @@
 
 		$scope.action = (Form) => {
 			console.log('Edit FORM', Form)
-			// UserService
-			// 	.update(Form)
-			// 	.then(logMessage)
-			// 	.catch(error)
+			UserService
+				.update(Form)
+				.then(logMessage)
+				.catch(error)
 		}
 	}
 	ListController.$inject = [`$scope`, `${MODULE_NAME}Service`];
