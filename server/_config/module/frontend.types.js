@@ -1,8 +1,10 @@
+const validateString = (val) => console.log(val !== '')
+
 const types = {
   'String': {
     element: 'input', 
     type: 'text',
-    validate: (val) => val !== ''
+    validate: validateString.toString()
   },
   'Number': {
     element: 'input', 

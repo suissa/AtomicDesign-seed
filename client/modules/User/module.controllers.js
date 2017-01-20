@@ -111,8 +111,16 @@
 			$scope.message = updated.data;
 		}
 		const successSchema = (caught) => {
-			console.log('SCHEMA', caught)
-			$scope.SCHEMA = caught.data;
+			// console.log('SCHEMA', caught)
+			// const validate = $eval()
+			const schema = caught.data
+														.map(el => {
+															const validate = eval(el.validate)
+															return Object.assign(el, {validate})
+														})
+			$scope.SCHEMA = schema
+			// const validate = eval(caught.data[1].validate)
+			console.log('teste validate', schema)
 		}
 		
 		UserService

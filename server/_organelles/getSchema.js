@@ -9,8 +9,8 @@ module.exports = (Organism) =>
       })
     const translateToComponent = (el, i) => 
       (TYPES[el.type])
-        ? Object.assign({name: el.name }, TYPES[el.type])
-        : Object.assign({name: el.name }, TYPES['String'])
+        ? Object.assign({name: el.name}, TYPES[el.type])
+        : Object.assign({name: el.name}, TYPES['String'])
 
     const schema = Object
                     .keys(Organism.schema.paths)
