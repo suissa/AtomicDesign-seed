@@ -16,7 +16,7 @@ const menuList = [
   },
   {
     label: 'Device',
-    link: hash + '/Device'
+    link: hash + '/device'
   },
   {
     label: 'Department',
