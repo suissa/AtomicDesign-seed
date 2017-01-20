@@ -8,10 +8,13 @@ const existsFile = (file) => fs.existsSync(file)
 const toPopulate = (acc, cur) => {
   let atomConfig = PATH + cur.trim() + '-config.js'
 
-  if ( existsFile(atomConfig) ) {
+  const addPopulate = (acc, cur) => {
     let populate = { path: cur.trim(), model: require(atomConfig)['ref'] }
     acc.push(populate)
     return acc
+  }
+  if ( existsFile(atomConfig) ) {
+     return addPopulate(acc, cur)
   }
   else return acc
 }

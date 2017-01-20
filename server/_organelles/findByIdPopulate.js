@@ -19,10 +19,11 @@ module.exports = (Organism) =>
     const query = {_id: req.params.id}
     const fieldsToPopulate = fields.reduce(toPopulate, [])
 
-    return Organism.findOne(query)
-      .populate(fieldsToPopulate)
-      .exec()
-      .then(success)
-      .catch(error)
+    return Organism
+            .findOne(query)
+            .populate(fieldsToPopulate)
+            .exec()
+            .then(success)
+            .catch(error)
   }
 
