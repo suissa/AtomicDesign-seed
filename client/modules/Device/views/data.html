@@ -1,0 +1,49 @@
+<ng-include src="'../menu/menu.html'">
+</ng-include>
+<div class="container center-align" ng-show="list">
+  <table class="responsive-table striped row" ng-show="list.length">
+    <thead>
+      <tr>
+        <th data-field="codigo" ng-repeat="field in SCHEMA">{{ field.name }}</th>
+        <th data-field="codigo">VISUALIZAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="entity in list">
+        <td ng-repeat="field in SCHEMA">
+          {{ entity[field.name] }}
+        </td>
+        <td>
+          <a href="#!/{{ PATH }}/{{ entity._id }}">
+            ver
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container center-align" ng-show="!list.length">
+  
+  <table class="responsive-table striped row">
+    <thead>
+      <tr>
+        <th data-field="codigo">Campo</th>
+        <th data-field="codigo">Valor</th>
+        <th data-field="codigo">EDITAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="(k,v) in caught">
+        <td style="font-weight: bold">{{k}}</td>
+        <td>{{v}}</td>
+        <td>
+          <a href="#!/{{ PATH }}/{{ caught._id }}/edit">
+            editar
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,235 @@
+<ng-include src="'../menu/menu.html'">
+</ng-include>
+<!-- <div class="card-panel">
+  <a href="" class="waves-effect btn red darken-4" ng-click="imprimir()"> Imprimir </a>
+</div>
+ -->
+<div>
+  <h5 style="text-align: center">Form de {{ MODULE_NAME }} - {{ title }}</h5>
+  <h6>{{ message }}</h6>
+  <form class="login-form"><!-- 
+    <div class="row">
+      <div class="input-field col s12">
+        <input ng-model="Form.name" id="name" type="text" class="validate">
+        <label for="email">Name
+          <i class="tiny material-icons">perm_identity</i>
+        </label>
+      </div>
+    </div> -->
+
+
+    <div class="row" ng-repeat="field in SCHEMA">
+      <div class="input-field col s12">
+
+        <div ng-show="field.element === 'input' ">
+          <input ng-model="Form[field.name]" id="{{ field.name }}" type="{{ field.type }}" class="validate" ng-show="{{field.type == 'text'}}">
+          <input ng-model="Form[field.name]" id="{{ field.name }}" type="{{ field.type }}" class="validate" ng-show="{{field.type == 'date'}}">
+          
+        </div>
+
+        <textarea ng-model="Form[field.name]" id="{{ field.name }}" class="validate" ng-show="{{field.type == 'textarea'}}"></textarea>
+        
+      <!--   <select ng-model="Form[field.name]" id="{{ field.name }}" class="validate"  ng-show="{{field.type == 'select'}}">
+          <option value="0">ALOOOO</option>
+        </select> -->
+
+        <label for="{{ field.name }}">{{ field.name.toUpperCase() }}
+          <i class="tiny material-icons">perm_identity</i>
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button ng-click="action(Form)" class="btn-large waves-effect waves-light col s12 red darken-4">
+          {{ actionButton }}
+        </button>
+      </div>
+    </div>
+  </form>
+
+</div>
+<!-- impressao -->
+
+
+
+<style>
+th, td {
+  border: 1px solid #000 !important;
+}
+
+hr {
+  background-color: #fff;
+  color: #fff;
+  height: 1px;
+}
+.relatorio-faixa {
+  margin-top: 40px;
+  padding-top: 20px;
+  line-height: 100px;
+  vertical-align: bottom;
+}
+.relatorio-faixa-titulo {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+.modal {
+  display: block;
+  position: absolute;
+  top: 20px;
+  z-index: 9999;
+  padding: 20px;
+  font-size: 14px;
+  background-color: #fff;
+  min-width: 60%;
+  min-height: 60%;
+  max-width: 80%;
+  max-height: 80%;
+
+  border-radius: 2px;
+}
+
+page[size="A4"][layout="landscape"] {
+  width: 29.7cm;
+  height: 21cm;
+}
+@media print {
+
+  * {
+      background: transparent !important;
+      color: #000 !important;
+      text-shadow: none !important;
+      filter:none !important;
+      -ms-filter: none !important;
+  }
+
+  body {
+      margin:0;
+      padding:0;
+      line-height: 1.4em;
+      font: 12pt Georgia, "Times New Roman", Times, serif;
+      color: #000;
+  }
+
+  .relatorio-faixa-separador {
+    color: #000;
+    background-color: #000;
+    height: 2px;
+  }
+  .relatorio-faixa-separador-fraca {
+    color: #666;
+    background-color: #666;
+    height: 1px;
+  }
+  @page {
+      margin: 1.5cm;
+  }
+
+  .wrap {
+      width: 100%;
+      margin: 0;
+      float: none !important;
+  }
+
+  .no-print, nav, footer, video, audio, object, embed {
+      display:none;
+  }
+
+  .print {
+      display: block;
+  }
+
+  img {
+      max-width: 100%;
+  }
+
+  aside {
+      display:block;
+      page-break-before: always;
+  }
+
+  h1 {
+      font-size: 24pt;
+  }
+
+  h2 {
+      font-size: 18pt;
+  }
+
+  h3 {
+      font-size: 14pt;
+  }
+
+  p {
+      font-size: 12pt;
+      widows: 3;
+      orphans: 3;
+  }
+
+  a, a:visited {
+      text-decoration: underline;
+  }
+
+  a:link:after, a:visited:after {
+      content: " (" attr(href) ") ";
+  }
+
+  p a {
+      word-wrap: break-word;
+  }
+
+  q:after {
+      content: " (" attr(cite) ")"
+  }
+
+  a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+      content: "";
+  }
+
+  .page-break {
+      page-break-before: always;
+  }
+
+  /*Estilos da Demo*/
+  .header.print h1{
+      width: 100%;
+      margin-bottom: 0.5cm;
+      font-size: 18pt;
+  }
+
+  .header.print:after {
+      content: "Este artigo foi escrito pela designer Dani Guerrato e retirado do site Tableless.";
+  }
+
+  .artigo {
+      margin-top: 0;
+      border-top: 1px solid #000;
+      padding-top: 1cm;
+  }
+
+  h1 a:link:after, h1 a:visited:after {
+      content: "";
+  }
+  table {
+    border: 3px solid #000 !important;
+  }
+  th, td{
+    border: 1px solid #000 !important;
+    text-align: center;
+    padding: 0px;
+    height: 2px;
+    font-size: 14pt;
+  }
+}
+
+.tb-print {
+border: 1px solid #000 !important;
+border-collapse: collapse;
+}
+.tb-print th, td{
+border: 1px solid #000 !important;
+text-align: center;
+padding: 0px;
+height: 2px;
+}
+</style>

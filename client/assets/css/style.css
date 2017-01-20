@@ -1,0 +1,50 @@
+.titulo {
+  display: flex !important;
+  align-content: flex-start !important;
+}
+
+main {
+  width: 89%;
+  margin: 0 5%;
+}
+.logo {
+  width: 200px;
+  margin: 20px auto;
+  display: block;
+}
+#login div {
+  margin: 20px auto;
+  float: none;
+}
+
+.navigation {
+        padding:10px;
+        /*float:left;*/
+        width:100%;
+        background-color:#EDEDED;
+}
+
+.navigation ul {
+	padding:0;
+    list-style:none;
+	overflow:auto;
+	width:600px;
+	margin:0 auto;
+}
+
+
+#login .input-field input:focus {
+  border-bottom: 1px solid #ff0000;
+  box-shadow: 0 1px 0 0 #ff0000;
+}
+
+#login .input-field label {
+ color: #000;
+ /*top: -1.6rem;*/
+}
+#login .input-field input[type=text]:focus + label {
+ color: #000;
+}
+#instrumentos-info {
+  font-size: 1.4rem;
+}

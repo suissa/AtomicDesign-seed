@@ -1,0 +1,54 @@
+<html lang="pt-br" ng-app="sisApp">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>4Case - MonitorCall</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- stylesheet para uso do materialize -->
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- stylesheet para utilizar os icons (login form possui icons) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Font Awesome icones melhores que do material icons -->
+    <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="icon" type="image/x-icon" href="./favicon.png"/>
+
+
+  </head>
+
+  <body>
+    <!-- angular-spinner -->
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/materialize/dist/js/materialize.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+    <script src="app.js"></script>
+    <script src="modules/Dashboard/module.js"></script>
+
+    <script src="modules/User/module.js"></script>
+    <script src="modules/User/module.service.js"></script> 
+    <script src="modules/User/module.controllers.js"></script>
+
+    <script src="modules/Department/module.js"></script>
+    <script src="modules/Department/module.controllers.js"></script>
+    <script src="modules/Department/module.service.js"></script>
+
+    <script src="modules/Device/module.js"></script>
+    <script src="modules/Device/module.controllers.js"></script>
+    <script src="modules/Device/module.service.js"></script>
+    
+    <script src="components/menu/menu.js"></script>
+
+      <div ng-view></div>
+  </body>
+</html>

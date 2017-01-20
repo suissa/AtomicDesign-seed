@@ -1,0 +1,11 @@
+{
+  "name": "calibracon",
+  "version": "0.0.1",
+  "description": "Sistema de calibração de instrumentos",
+  "main": "app.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "author": "Thiago",
+  "license": "WTFPL"
+}
