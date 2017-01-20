@@ -69,7 +69,6 @@
 	function CreateController($scope, DeviceService) {
 		$scope.MODULE_NAME = MODULE_NAME
 		$scope.PATH = MODULE_NAME.toLowerCase()
-		$scope.SCHEMA = SCHEMA
 
 		var vm = this;
 
@@ -81,6 +80,16 @@
 			console.log(`VOLTOU: `, created)
 			$scope.message = created.data;
 		}
+		const successSchema = (caught) => {
+			console.log('SCHEMA', caught)
+			$scope.SCHEMA = caught.data;
+		}
+		
+		DepartmentService
+			.getSchema()
+			.then(successSchema)
+			.catch(error)
+
 
 		$scope.action = (Form) => 
 			DeviceService
