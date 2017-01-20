@@ -2,6 +2,28 @@
 
 const HOST = 'http://localhost:8000/'
 
+const html5mode = false
+const hash = !html5mode ? '#!' : ''
+
+const menuList = [
+  {
+    label: 'Dashboard',
+    link: hash + '/dashboard'
+  },
+  {
+    label: 'User',
+    link: hash + '/user'
+  },
+  {
+    label: 'Device',
+    link: hash + '/Device'
+  },
+  {
+    label: 'Department',
+    link: hash + '/department'
+  }
+]
+
 angular.module('sisApp.dashboard', ['ngRoute'])
 
 .config(['$routeProvider', DashboardConfig])
@@ -17,6 +39,10 @@ function DashboardConfig($routeProvider) {
 }
 
 function DashboardCtrl($scope, DashboardService, $rootScope, usSpinnerService, $location) {
+
+  $rootScope.menuList = menuList
+
+  console.log('menuList', menuList)
 
   var vm = this;
   var produtos = [];

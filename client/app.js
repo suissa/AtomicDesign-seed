@@ -14,7 +14,7 @@ angular.module('sisApp', [
 config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  // $routeProvider.otherwise({
-  //   redirectTo: '/dashboard'
-  // });
+  $routeProvider.otherwise({
+    redirectTo: '/dashboard'
+  });
 }]);
