@@ -36,6 +36,82 @@ Além das pastas `dump` e `modules`, é na `modules` onde iremos criar nossos m�
 
 #### _atoms
 
+Nessa pasta criaremos qualquer átomos(campo) necessário para nosso Módulo, porém como reutilizamos diversos campos em diferentes Sistemas e até mesmo em diferentes Módulos, criei uma arquitetura onde você possa criar UM campos apenas UMA vez e depois só reutiliza-lo.
+
+Para que a automatização seja possível eu criei um certo padrão de arquivos e nomenclatura, então vamos iniciar, como exemplo, a fazer um módulo de Cursos baseando-se no já existente Módulo de `User`, para isso vamos definir **minimamente** seus átomos:
+
+- name
+- description
+
+```js
+// _atoms/name.js
+const CONFIG = require('./../_config/atoms')(__filename)
+const DEFAULT = {
+  ATOM_NAME: CONFIG.ATOM_NAME,
+  VALIDATE: false
+}
+const PROPS = {
+  type: String,
+  // required: true
+}
+
+const atomConfig = Object.assign({}, DEFAULT, PROPS)
+
+const Atom = require('./../_factories/atom')(atomConfig)
+
+module.exports = Atom
+```
+
+```js
+// _atoms/description.js
+
+const CONFIG = require('./../_config/atoms')(__filename)
+const DEFAULT = {
+  ATOM_NAME: CONFIG.ATOM_NAME,
+  VALIDATE: false,
+}
+const PROPS = {
+  type: String
+}
+
+const atomConfig = Object.assign({}, DEFAULT, PROPS)
+
+module.exports = require('./../_factories/atom')(atomConfig)
+```
+
+*ps: esses 2 átomos já existem na nossa estrutura, não precisa recriar*
+
+Perceba que o primeiro Objeto a ser configurado é o `DEFAULT`, o qual contém `ATOM_NAME`.
+
+> Porém de onde vem esse valor?
+
+Analise comigo essa linha:
+
+```js
+const CONFIG = require('./../_config/atoms')(__filename)
+```
+
+Percebeu que estamos passando a constante `__filename` para o módulo `_config/atoms`?
+
+Falarei mais sobre ele adiante, porém para explicar será mais fácil mostrar o código desse módulo:
+
+```js
+const VALIDATE_TYPE = 'Mongoose'
+const VALIDATE_FACTORY = 'factory' +VALIDATE_TYPE+ 'Validate'
+const VALIDATE_FACTORY_PATH = './../_hadrons/' + VALIDATE_FACTORY
+
+module.exports = (_file) => {
+  const ATOM_NAME = _file.toLowerCase()
+
+  return {
+    ATOM_NAME,
+    VALIDATE_FACTORY_PATH
+  }
+}
+```
+
+Logo ele irá retornar o nome do átomo, pois ele é definido pelo **nome do seu arquivo**, além de `VALIDATE_FACTORY_PATH` que irei comentar mais a frente.
+
 #### _config
 
 #### _factories
