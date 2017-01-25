@@ -10,15 +10,18 @@ Como eu sempre percebo padrões na minha programação decidi criar um automatiz
 
 No Atomic Design devemos pensar do micro para o macro, porém entendo o quão isso possa parecer contra-intuitivo, por isso na **minha** arquitetura você pode iniciar pensando nas **Entidades** que compõe seu Sistema, entretanto essa Entidade é composta de (ainda refatorarei a nomenclatura para nomes mais comuns):
 
-- rotas
-  - organelas
-    - ribossomos
-    - helpers
-- organismo
-  - moléculas
-    - átomos
-      - hadrons
-        - quarks
+- rotas: entrada de cada requisição
+  - organelas: funções executadas nas rotas
+    - ribossomos: callbacks de sucesso e erro das Organelas
+    - helpers: funções ajudantes para as Organelas
+- organismo: tipo de um Controller
+  - moléculas: tipo de um Schema
+    - átomos: os campos que compõe uma Molécula
+      - hadrons: estrutura que agrega o campo à sua validação
+        - quarks: função de validação
+
+
+Seguindo a estrutura vista acima n'os temos
 
 
 ### Pastas Globais
@@ -98,7 +101,7 @@ Falarei mais sobre ele adiante, porém para explicar será mais fácil mostrar o
 ```js
 const VALIDATE_TYPE = 'Mongoose'
 const VALIDATE_FACTORY = 'factory' +VALIDATE_TYPE+ 'Validate'
-const VALIDATE_FACTORY_PATH = './../_hadrons/' + VALIDATE_FACTORY
+const VALIDATE_FACTORY_PATH = './../_hadrons/'  + VALIDATE_FACTORY
 
 module.exports = (_file) => {
   const ATOM_NAME = _file.toLowerCase()
