@@ -6,6 +6,22 @@ Ela está atualmente na sua versão 4.0 pois foi baseada [nessa arquitetura Atô
 
 Como eu sempre percebo padrões na minha programação decidi criar um automatizador para meus módulos já iniciarem com um CRUD (aumentado) sem muito esforço, bom então bora explicar como funciona.
 
+
+## Ideia - Conceito
+
+Criei essa arquitetura pois estava cansado de repetir as mesmas coisas, por isso pensei:
+
+> Cada coisa que eu modularizar eu posso reutilizar em outro Sistema.
+
+
+Logo a primeira necessidade que percebi vinha do Frontend, pois:
+
+> Se eu quiser usar um campo com nome `email` quero que o input tenha o `type=email` e com sua validação já integrada, o que acho que é o mínimo já que qualquer dev já teve que fazer ou usar um campo chamado `email` em algum Projeto.
+
+Nada mais simples que apenas **reaproveitar** o que já foi criado.
+
+> Minha ideia é reusar todo o código criado anteriormente!
+
 ## Arquitetura - Backend
 
 No Atomic Design devemos pensar do micro para o macro, porém entendo o quão isso possa parecer contra-intuitivo, por isso na **minha** arquitetura você pode iniciar pensando nas **Entidades** que compõe seu Sistema, entretanto essa Entidade é composta de (ainda refatorarei a nomenclatura para nomes mais comuns):
@@ -21,7 +37,6 @@ No Atomic Design devemos pensar do micro para o macro, porém entendo o quão is
         - quarks: função de validação
 
 
-Seguindo a estrutura vista acima n'os temos
 
 
 ### Pastas Globais
