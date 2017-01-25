@@ -132,6 +132,12 @@ Logo ele irá retornar o nome do átomo, pois ele é definido pelo **nome do seu
 
 #### _config
 
+> Ah a configuração! Já ouviu falar sobre Convetion Over Configuration? (Ruby on Rails usa CoC)
+
+> Eu criei uma arquitetura onde você pode definir sua convenção a partir de uma configuração!
+
+![Blowing my mind](http://i.giphy.com/xTiTni8YrHMjlQQdNK.gif)
+
 #### _factories
 
 #### _hadrons
