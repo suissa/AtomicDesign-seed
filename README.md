@@ -138,6 +138,32 @@ Logo ele irá retornar o nome do átomo, pois ele é definido pelo **nome do seu
 
 ![Blowing my mind](http://i.giphy.com/xTiTni8YrHMjlQQdNK.gif)
 
+Primeiramente vamos faler sobre a **convenção** já pré-criada por mim.
+
+O passo inicial, que acredito ser, é definir quais pastas serão usadas, **porém eu já lhe poupei esse trabalho com isso**:
+
+```js
+const PROJECT_PATH =  __dirname.split('_config')[0]
+const QUARKS_PATH = PROJECT_PATH + '/_quarks/'
+const ATOMS_PATH = PROJECT_PATH + '/_atoms/'
+const FACTORIES_PATH = PROJECT_PATH + '/_factories/'
+const ORGANISM_FACTORY = FACTORIES_PATH + 'organism'
+const MOLECULE_FACTORY = FACTORIES_PATH + 'molecule.mongoose'
+
+
+module.exports = {
+  PROJECT_PATH,
+  QUARKS_PATH,
+  ATOMS_PATH,
+  FACTORIES_PATH,
+  ORGANISM_FACTORY,
+  MOLECULE_FACTORY
+}
+
+```
+
+
+
 #### _factories
 
 #### _hadrons
