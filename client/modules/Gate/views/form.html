@@ -1,0 +1,46 @@
+<ng-include src="'../menu/menu.html'">
+</ng-include>
+<div>
+  <h5 style="text-align: center">Form de {{ MODULE_NAME }} - {{ title }}</h5>
+  <h6>{{ message }}</h6>
+  <form class="login-form">
+
+    <div class="row" ng-repeat="field in SCHEMA">
+
+      <div class="input-field col s12">
+        <div ng-show="field.element === 'input' ">
+          <input ng-model="Form[field.name]"
+                  id="{{ field.name }}"
+                  placeholder="{{ field.name }}"
+                  type="{{ field.type }}"
+                  class="validate"
+                  ng-blur="field.validate(Form[field.name])"
+                  ng-show="{{field.type == 'text'}}">
+          <input ng-model="Form[field.name]" id="{{ field.name }}" type="{{ field.type }}" class="validate" ng-show="{{field.type == 'date'}}">
+
+          <label ng-show="{{field.type == 'checkbox'}}">{{ field.name }}
+          <input ng-model="Form[field.name]" id="{{ field.name }}" type="{{ field.type }}" class="validate" ng-show="{{field.type == 'checkbox'}}"></label>
+        </div>
+
+        <div ng-show="field.element === 'textarea' ">
+          <textarea ng-model="Form[field.name]" id="{{ field.name }}" class="validate" ng-show="{{field.type == 'textarea'}}"></textarea>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button ng-click="action(Form)" class="btn-large waves-effect waves-light col s12 red darken-4">
+          {{ actionButton }}
+        </button>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<style>
+  .error {
+    border: 5px solid #F00;
+  }
+</style>

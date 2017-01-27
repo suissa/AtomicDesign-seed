@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const DB = 'db-callcenter-testes'
+const DB = 'db-parking'
 mongoose.connect('mongodb://localhost/' + DB)
 mongoose.Promise = require('bluebird')
 

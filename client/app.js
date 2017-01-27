@@ -8,6 +8,7 @@ angular.module('sisApp', [
   'sisApp.User',
   'sisApp.Department',
   'sisApp.Device',
+  'sisApp.Gate',
   'ui.materialize',
   'angularSpinner'
 ]).

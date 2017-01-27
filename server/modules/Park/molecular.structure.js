@@ -4,5 +4,9 @@ module.exports = [
   'vagas',
   'owner',
   'employes',
-  'created_at'
+  'lots',
+  'rates',
+  'gates',
+  'created_at',
+  'updated_at'
 ]

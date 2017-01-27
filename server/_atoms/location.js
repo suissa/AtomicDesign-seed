@@ -1,13 +1,12 @@
 const CONFIG = require('./../_config/atoms')(__filename)
 const DEFAULT = {
   ATOM_NAME: CONFIG.ATOM_NAME,
-  VALIDATE: false,
-  ARRAY: true
+  VALIDATE: false
 }
 const PROPS = {
-  type: String,
-  lowercase: true
-  // Array de devices
+  type: [Number],
+  required: true,
+  index: '2d'
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)
